@@ -1,11 +1,11 @@
 ---
 layout: page
-title: projects
+title: Projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: Engineering Dreams into reality. 
 nav: true
-nav_order: 3
-display_categories: [work, fun]
+nav_order: 1
+display_categories: [Graduate, Undergraduate]
 horizontal: false
 ---
 

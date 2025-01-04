@@ -1,81 +1,69 @@
 ---
 layout: page
-title: project 1
-description: with background image
-img: assets/img/12.jpg
+title: BEV-Perception for Precise Autonomous Parking
+description: Developing a teleoperation system with Bird’s-Eye View visualization for precise vehicle navigation and parking.
+img: assets/img/g10.jpg
 importance: 1
-category: work
-related_publications: true
+category: Graduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Problem Statement
+The PERCIV project addresses a critical inefficiency in car manufacturing plants: the manual transportation of vehicles from production lines to storage facilities. Current methods rely heavily on human drivers, resulting in significant labor costs, time inefficiencies, and safety concerns. PERCIV seeks to replace this approach with a teleoperation system that leverages external perception to enable precise vehicle navigation and parking, reducing operational bottlenecks.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+### System Implementation
+#### Bird’s-Eye View (BEV) Generation
+- **Experimentation with Inverse Perspective Mapping (IPM):** 
+  - Evaluated IPM for generating BEV from individual camera images.
+  - Determined that a homography-based planar transformation on a stitched image provided higher fidelity for visualization.
+- **Final BEV Implementation:**
+  - Stitched multiple camera feeds using a graph-based neural network optimized for feature-sparse environments.
+  - Transformed stitched images into BEV using homography for an intuitive top-down view.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+#### Object Detection and Localization
+- Integrated a custom YOLO model to detect and localize the target vehicle in the BEV.
+- Fused camera data with odometry using an Extended Kalman Filter (EKF) for enhanced localization accuracy.
+- Achieved a mean average precision (mAP) of **97.5%** for vehicle localization against ground truth measured using ArUco markers.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+#### UI/UX Design
+- Designed a user interface using Streamlit and ReactJS for seamless teleoperation and waypoint-based control.
+- Key features:
+  - Real-time BEV visualization with trajectory overlays.
+  - Speedometer, gear status, and safety alerts.
+  - Support for multi-car control and intuitive navigation.
+
+#### Image and Video Demonstrations
+##### Image 1: Stitched BEV of the Scene
+<div class="text-center">
+    {% include figure.liquid path="assets/img/g11.png" title="Stitched BEV of the Scene" class="img-fluid rounded z-depth-1" %}
+</div>
+
+##### Image 2: Final BEV Visualization
+<div class="text-center">
+    {% include figure.liquid path="assets/img/g12.png" title="Final BEV Visualization with Overlays" class="img-fluid rounded z-depth-1" %}
+</div>
+
+##### Image 3: UI/UX Interface
+<div class="text-center">
+    {% include figure.liquid path="assets/img/g13.png" title="UI/UX Interface with Real-Time Updates" class="img-fluid rounded z-depth-1" %}
+</div>
+
+##### Video: PERCIV in Action
+<div class="text-center">
+    <video controls class="img-fluid rounded z-depth-1" preload="metadata" width="600" height="400">
+        <source src="/assets/video/perciv_demo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="caption mt-2">
+        Demonstration of PERCIV Teleoperation System.
     </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
 </div>
 
-You can also put regular text between your rows of images, even citations {% cite einstein1950meaning %}.
-Say you wanted to write a bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
+### Results
+- **Performance Metrics:**
+  - Update frequency: **10 Hz**, ensuring real-time visualization and control.
+  - Successful parking detection: **80%**, adhering to specified tolerance limits.
+  - Vehicle speed: **10 cm/s**, allowing smooth navigation.
+- **Final Performance:**
+  - Demonstrated teleoperation and waypoint-based autonomous control with high reliability.
+  - Successfully showcased precise vehicle parking and obstacle avoidance during the Final Validation Demonstration (FVD).

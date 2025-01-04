@@ -1,81 +1,44 @@
 ---
 layout: page
-title: project 8
-description: an other project with a background image and giscus comments
-img: assets/img/9.jpg
+title: Visually Guided Motion Planning
+description: Leveraging dense 3D reconstruction and 6D pose estimation for precision robotic grasping.
+img: assets/img/P4_2.jpg
 importance: 2
-category: work
-giscus_comments: true
+category: Undergraduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Introduction
+This project aimed to enhance the precision and reliability of robotic grasping tasks by integrating vision-based motion planning. By leveraging dense 3D reconstruction and real-time 6D pose estimation, the system optimized grasp point estimation and improved robotic arm performance.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
-
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+#### Image 1: Dataset of Objects for Reconstruction
+<div class="text-center">
+    {% include figure.liquid path="assets/img/P4_1.jpg" title="Dataset of 900+ Images for 3D Reconstruction" class="img-fluid rounded z-depth-1" %}
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Approach
+1. **Data Collection and Reconstruction:**  
+   - Curated a dataset of 900+ images using an Intel RealSense D435 depth camera.
+   - Performed dense 3D reconstruction of the scene using Structure-from-Motion (SfM) and Multi-View Stereo (MVS) techniques.
+   - Created a detailed 3D model of the target scene for subsequent pose estimation.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+#### Image 2: Dense 3D Reconstruction of the Scene
+<div class="text-center">
+    {% include figure.liquid path="assets/img/P4_2.jpg" title="Dense 3D Reconstruction of the Scene" class="img-fluid rounded z-depth-1" %}
 </div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+2. **6D Pose Estimation and Motion Planning:**
+   - Utilized the Deep Object Pose Estimation model to compute the real-time 6D pose of objects.
+   - Integrated vision-driven motion generation to optimize grasping precision by detecting the optimal grasp points for the robotic arm.
 
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
+#### Image 3: Processed 3D Mesh of the Target Object
+<div class="text-center">
+    {% include figure.liquid path="assets/img/P4_3.jpg" title="Processed 3D Mesh of the Target Object for 6D Pose Estimation" class="img-fluid rounded z-depth-1" %}
 </div>
-```
 
-{% endraw %}
+### Results
+- Achieved precise 6D pose estimation of objects in real time.
+- Enhanced grasping precision by **8%** using the Franka robotic arm, improving efficiency and accuracy in motion planning tasks.
+- Validated the system’s performance across multiple real-world scenarios, showcasing its robustness and adaptability.
+
+

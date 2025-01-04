@@ -1,80 +1,100 @@
 ---
 layout: page
-title: project 6
-description: a project with no image
-img:
-importance: 4
-category: fun
+title: Projective Geometry, Rectification
+description: Exploring affine rectification, metric rectification, and planar homography for vision-based tasks.
+img: assets/img/g51.png
+importance: 6
+category: Graduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Affine Rectification
+Affine rectification restores the parallelism of lines that appear skewed due to perspective distortion. The homography matrix \( H \) was computed to achieve this transformation.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+#### Steps:
+1. **Find Points at Infinity**:
+   - Parallel lines were identified, and their intersections calculated to determine points at infinity.
+   - The vanishing line was computed using:
+     $$ l'_{\infty} = \text{cross}(P_{\infty 1}, P_{\infty 2}) $$
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+2. **Affine Rectification Homography**:
+   - Constructed \( H \) to restore parallelism:
+     $$ H = \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ l_1 & l_2 & l_3 \end{bmatrix} $$
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+#### Visualization:
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/chess1_affine_rect.png" title="Affine Rectification Output" class="img-fluid rounded z-depth-1" %}
 </div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/facade_affine_rect.png" title="Affine Rectification Output" class="img-fluid rounded z-depth-1" %}
 </div>
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+---
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+### Metric Rectification
+Metric rectification further refines the affine transformation to restore both parallelism and orthogonality.
+
+#### Key Concepts:
+1. **Circular Points at Infinity**:
+   - The remaining distortion after affine rectification is captured by the conic at infinity \( C_{\infty} \):
+     $$ C_{\infty} = H \cdot C'_{\infty} \cdot H^T $$
+
+2. **Perpendicular Line Constraints**:
+   - Enforced using:
+     $$ l'^T C'_{\infty} m' = 0 $$
+
+3. **Homography Matrix**:
+   - Computed using SVD to derive eigenvalues and eigenvectors, yielding the final transformation matrix.
+
+#### Visualization:
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/final_metric_rect.png" title="Metric Rectification Output" class="img-fluid rounded z-depth-1" %}
 </div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/chess1_metric_rect.png" title="Affine Rectification Output" class="img-fluid rounded z-depth-1" %}
 </div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+---
 
-{% raw %}
+### Planar Homography
+Planar homography computes a \( 3 \times 3 \) matrix \( H \) to map points between two planes based on correspondences.
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
+#### Steps:
+1. **Homography Equation**:
+   $$ X' = H \cdot X $$
+
+2. **Constraints Using Point Correspondences**:
+   - Derived the matrix \( A \) from correspondences:
+     $$ A \cdot h = 0 $$
+
+3. **Solve Using SVD**:
+   - Resolved \( A \) to compute \( H \), transforming images accurately.
+
+#### Visualization:
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/homography.png" title="Planar Homography Result" class="img-fluid rounded z-depth-1" %}
 </div>
-```
 
-{% endraw %}
+---
+
+### Metric Rectification from Perpendicular Lines
+To directly achieve metric rectification, perpendicular line constraints were used to populate the matrix \( A \), ensuring geometric consistency.
+
+#### Visualization:
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/checker1_Direct_rect copy.png" title="Direct Metric Rectification Output" class="img-fluid rounded z-depth-1" %}
+</div>
+
+---
+
+### Applications of Homography
+Planar homography was extended to multiple images for applications such as perspective overlays and wall blending.
+
+#### Visualization:
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/input_hom_multi.jpeg" title="Input Images to be warped and overlaid" class="img-fluid rounded z-depth-1" %}
+</div>
+
+<div class="text-center">
+    {% include figure.liquid path="assets/img/GA1/blended_image.jpg" title="Blended Homography Output" class="img-fluid rounded z-depth-1" %}
+</div>

@@ -1,80 +1,58 @@
 ---
 layout: page
-title: project 9
-description: another project with an image 🎉
-img: assets/img/6.jpg
-importance: 4
-category: fun
+title: AI-Enhanced Robotic Manipulation Using RL
+description: Leveraging DDPG, HER, and PER for efficient robotic pick-and-place tasks.
+img: assets/img/P2_1.jpg
+importance: 3
+category: Undergraduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Introduction
+The project aimed to develop and deploy reinforcement learning (RL) algorithms for robotic pick-and-place operations in industrial environments. The focus was on enabling a six-degree-of-freedom robotic arm to learn and adapt to unstructured environments through combinations of Deep Deterministic Policy Gradient (DDPG), Hindsight Experience Replay (HER), and Prioritized Experience Replay (PER).
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+### Approach
+The task was simulated in the MuJoCo environment, where combinations of RL algorithms were tested for efficiency. The experiments evaluated:
+1. **DDPG with HER and PER:** Integrated prioritized sampling with hindsight experience replay to enhance learning efficiency.
+2. **Batch Size and Nodes:** Investigated the effect of varying batch sizes and neural network configurations on convergence rates and performance.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+The deployment involved:
+- Training the robotic arm for 4000 episodes with a batch size of 128.
+- Evaluating the trained model's ability to achieve precise pick-and-place operations.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+### Results
+#### Quantitative Metrics:
+- The combination of **DDPG+HER+PER** resulted in the most stable learning, but required slightly longer training times due to sampling weight computation.
+- Using **DDPG+HER** alone achieved faster convergence but struggled with edge cases.
+- Larger batch sizes (256) outperformed smaller ones (128) in terms of convergence speed and stability.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Performance Metrics
+#### Observations:
+- **DDPG+HER+PER** demonstrated the best success rate of **91.2%** after 2500 epochs.
+- Training with larger batch sizes reduced convergence time by **~30%** compared to smaller batches.
+- The robotic arm learned smooth and efficient pick-and-place trajectories, outperforming simpler RL methods.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
+The table below summarizes the results of different reinforcement learning algorithm combinations:
+
+| **Algorithm Combination** | **Convergence Time (epochs)** | **Final Success Rate (%)** |
+|----------------------------|-------------------------------|-----------------------------|
+| DDPG                      | 2000                          | 74.3                        |
+| DDPG+HER                  | 1800                          | 85.6                        |
+| DDPG+HER+PER              | 2500                          | 91.2                        |
+
+---
+
+### Visual Demonstration
+#### Images: MuJoCo Simulation Environment
+<div class="text-center">
+    {% include figure.liquid path="assets/img/P2_1.jpg" title="Simulated MuJoCo Environment for Training" class="img-fluid rounded z-depth-1" %}
 </div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
+<div class="text-center">
+    {% include figure.liquid path="assets/img/P2_2.jpg" title="Optimal Pick-and-Place Trajectory Learned by the Robotic Arm" class="img-fluid rounded z-depth-1" %}
 </div>
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+### Link to Publication
+[[Click here](https://www.sciencedirect.com/science/article/abs/pii/S0360835224002274)]
 
-{% raw %}
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
 
-{% endraw %}

@@ -1,80 +1,44 @@
 ---
 layout: page
-title: project 4
-description: another without an image
-img:
-importance: 3
-category: fun
+title: "SimplySort: Autonomous Book Shelf Organiser"
+description: Developing autonomous manipulation capabilities for robotic arm with perception, planning, and control integration.
+img: assets/img/g30.png
+importance: 4
+category: Graduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Project Description
+This project focused on the development of autonomous manipulation capabilities for robotic arm, integrating perception, planning, and control subsystems. The objective was to enable a robotic arm to navigate complex environments while avoiding obstacles and efficiently reaching predefined goals.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+### System Overview
+The system architecture included:
+1. **Perception Subsystem:**
+   - Used a stereo camera for depth estimation and object detection.
+   - Integrated real-time obstacle detection using a pre-trained YOLO model.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+2. **Planning Subsystem:**
+   - Implemented a local planner using the Dijkstra algorithm for optimal pathfinding.
+   - Utilized a global planner for long-range navigation goals, considering dynamic and static obstacles.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+3. **Control Subsystem:**
+   - Designed a Proportional-Integral-Derivative (PID) controller for smooth trajectory following.
+   - Incorporated velocity scaling to ensure safety in dynamic environments.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+### Results
+The system demonstrated reliable autonomous navigation in various test environments, showcasing the integration of perception and planning pipelines with real-time control. Key features included robust obstacle avoidance and efficient goal-reaching behaviors.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+---
+
+### Video Demonstration
+Below is a video showcasing the autonomous manipulation and control capabilities of the system.
+
+<div class="text-center">
+    <video controls class="img-fluid rounded z-depth-1" preload="metadata" width="600" height="400">
+        <source src="/assets/video/rauto.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="caption mt-2">
+        Demonstration of Autonomous Manipulation and Control.
     </div>
 </div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}

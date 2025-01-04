@@ -1,81 +1,68 @@
 ---
 layout: page
-title: project 3 with very long name
-description: a project that redirects to another website
-img: assets/img/7.jpg
-redirect: https://unsplash.com
+title: SuperPoint Features in Visual-Inertial SLAM
+description: Integrating SuperPoint features into the VINS framework for robust and repeatable keypoint detection.
+img: assets/img/g401.png
 importance: 3
-category: work
+category: Graduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Project Description
+This project focused on enhancing Simultaneous Localization and Mapping (SLAM) performance by integrating SuperPoint features into the VINS framework. The goal was to improve the robustness and repeatability of feature detection, particularly in challenging visual environments. By replacing the baseline VINS feature detector with SuperPoint, the system achieved superior localization accuracy and reliability.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+---
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+### Key Contributions
+1. **Integration of SuperPoint:**
+   - SuperPoint, a deep learning-based keypoint detector and descriptor, was integrated into the VINS pipeline to replace the classical feature detector.
+   - Improved robustness in detecting keypoints under challenging conditions such as low light, repetitive patterns, and motion blur.
+
+2. **Keypoint Detection and Matching:**
+   - SuperPoint provided higher repeatability and robustness in keypoint matching across frames.
+   - Enhanced feature matching accuracy, leading to improved pose estimation and reduced drift.
+
+3. **Seamless Integration:**
+   - Modified the VINS framework to support real-time operation with SuperPoint, ensuring compatibility with existing system modules.
+
+---
+
+### Visualization
+#### Comparison of Feature Detectors
+Below is a comparison of keypoints detected on the same scene using the baseline VINS feature detector (a) and SuperPoint (b). SuperPoint extracts more robust and repeatable keypoints, especially in challenging regions.
 
 <div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
-
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
-
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
-
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm-6 text-center">
+    {% include figure.liquid path="assets/img/prep1.jpg" title="Baseline VINS Feature Detector" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
+  <div class="col-sm-6 text-center">
+    {% include figure.liquid path="assets/img/prep2.jpg" title="SuperPoint Feature Detector" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-```
 
-{% endraw %}
+#### SuperPoint Integrated with VINS
+The image below illustrates the working of the SLAM system with SuperPoint integrated into the VINS framework.
+
+<div class="text-center">
+    {% include figure.liquid path="assets/img/r1.png" title="SLAM with SuperPoint Integrated into VINS" class="img-fluid rounded z-depth-1" %}
+</div>
+
+---
+
+### System Implementation
+1. **SuperPoint Integration:**
+   - Integrated SuperPoint into the VINS pipeline, replacing the classical feature detector and descriptor.
+   - Optimized the system for real-time operation without compromising computational efficiency.
+
+2. **Feature Matching and Pose Estimation:**
+   - Used SuperPoint’s keypoints and descriptors for accurate matching across frames.
+   - Improved pose estimation by leveraging high-quality feature matches, reducing drift in long trajectories.
+
+3. **Testing and Validation:**
+   - Validated the system in various challenging environments, demonstrating improved robustness and reliability in feature detection and SLAM performance.
+
+---
+
+### Summary
+By integrating SuperPoint into the VINS framework, this project successfully enhanced SLAM performance, especially in visually challenging scenarios. The integration demonstrated the potential of deep learning-based feature detectors to significantly improve traditional SLAM systems.
+

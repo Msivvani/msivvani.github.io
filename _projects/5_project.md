@@ -1,80 +1,70 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
-importance: 3
-category: fun
+title: Diffusion Model for Action Anticipation
+description: Leveraging advanced visual learning techniques to enhance perception systems.
+img: assets/img/g601.png
+importance: 5
+category: Graduate
+related_publications: false
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+### Project Description
+The Visual Learning and Recognition (VLR) project explored the integration of state-of-the-art visual learning techniques into perception systems for enhanced scene understanding and decision-making. The primary objective was to bridge the gap between classical computer vision approaches and modern deep learning-based solutions.
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+---
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+### Key Objectives
+1. **Enhanced Scene Understanding**:
+   - Developed a pipeline for action recognition, segmentation, and temporal analysis using Convolutional Neural Networks (CNNs).
+   - Incorporated feature fusion techniques to improve temporal data understanding.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+2. **Robust Learning Framework**:
+   - Experimented with transfer learning to leverage pre-trained models for activity recognition tasks.
+   - Fine-tuned models specifically for datasets focusing on structured activities.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+3. **Efficient Model Deployment**:
+   - Optimized the learning pipeline for real-time inference.
+   - Explored various model compression techniques to reduce latency without compromising accuracy.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+---
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+### Dataset: 50Salads
+1. **Overview**:
+   - The 50Salads dataset was used for this project. It comprises 50 video sequences of people preparing mixed salads, annotated with action labels for each frame.
+   - Includes annotations for both high-level and fine-grained activities, making it ideal for evaluating action recognition and temporal segmentation tasks.
 
-{% raw %}
+2. **Preprocessing**:
+   - Videos were resized and normalized to ensure uniformity in input data.
+   - Data augmentation techniques, such as cropping and rotation, were applied to increase model robustness.
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
+---
 
-{% endraw %}
+### Methodology
+1. **Data Acquisition and Pre-Processing**:
+   - Processed the 50Salads dataset to extract meaningful spatiotemporal features.
+   - Applied normalization and augmentation to improve generalization.
+
+2. **Model Design**:
+   - Employed a combination of CNNs and Recurrent Neural Networks (RNNs) for feature extraction and temporal modeling.
+   - Used pre-trained CNN backbones for initial feature extraction and trained RNNs to capture temporal dependencies.
+
+3. **Training and Validation**:
+   - Used cross-entropy loss for action classification and temporal segmentation tasks.
+   - Validated the model's performance using frame-wise accuracy and F1 scores on the test set.
+
+4. **Deployment**:
+   - Focused on efficient inference pipelines for low-latency action recognition.
+   - Evaluated the deployment on simulated environments with diverse lighting and activity conditions.
+
+---
+
+### Applications
+The VLR framework has potential applications in:
+- Human activity recognition for assistive robotics.
+- Video surveillance and monitoring systems.
+- Enhancing human-computer interaction for smart devices.
+
+---
+
+### Summary
+The Visual Learning and Recognition project demonstrated the feasibility of using deep learning techniques on the 50Salads dataset to achieve robust action recognition and segmentation. The modular architecture ensures scalability and adaptability for diverse applications in human activity understanding.
